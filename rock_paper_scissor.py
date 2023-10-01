@@ -10,7 +10,11 @@ root.configure(background="black",width=1000)
 root.maxsize(1100,1300)
 root.minsize(1100,1300)
 root.title("ROCK PAPER SCISSOR GAME")
+<<<<<<< HEAD:rock paper scissor (gui).py
 # creating canvas git
+=======
+# creating canvaskmijf
+>>>>>>> 250a7eb7fae5844f56a08d6952e1f4473a6b4990:rock_paper_scissor.py
 canvas = Canvas(background="black",border=2,height=900)
 your_score=0
 comp=0
@@ -52,12 +56,7 @@ def computer():
     else:
         oppchoise="SCISSOR"
     print(f"computer choose {com}")
-def x():
-    try:
-        root.after(1000)
-    except:
-        pass
-    return logic(player,com)
+
 
 def display(player):
     global z
@@ -65,36 +64,50 @@ def display(player):
     global ops
     global opp
 
-    computer()
     #calling computer function to set oppent choise
+    computer()
     #To prevent erro of z not defind and clearing previous result,your score,opponent score and opponent choise
-
     try:
-        # clr(z)
+        clr(z)
         clr(pls)
         clr(ops)
         clr(opp)
+        
     except:
         pass
     
-    z=canvas.create_text(576,170,fill="yellow",text=logic(player,com),font=('typewriter 50 bold'))
-    z.upda
+    z=canvas.create_text(576,170,fill="yellow",font=('typewriter 50 bold'))
+    canvas.itemconfig(z,text=logic(player,com))
+    
+    
     pls=canvas.create_text(525, 300, text=f"YOUR SCORE : {your_score}", fill="pink", font=('typewriter 25 bold'))
     ops=canvas.create_text(566, 400, text=f"OPPONENT SCORE : {comp}", fill="pink", font=('typewriter 25 bold'))
     opp=canvas.create_text(930, 160, text=f"{oppchoise}", fill="#00FFFF", font=('typewriter 25 bold'))
     
 
 #function to get user choise by collecting text from the button which is pressed
+def click_animation(r):
+    r.config(relief=SUNKEN)
+    r.update()
+    r.config(relief=RAISED)
+    sleep(0.3)
+    
+        
 def playerchoise(event):
     pltext=event.widget.cget("text")
     if pltext=="ROCK":
+        click_animation(r)
         player=1
     elif pltext=="PAPER":
+        click_animation(p)
         player=2
     else:
+        click_animation(s)
         player=3
     
     display(player)
+
+    
 #function to clear previous text
 def clr(i):
     try:
@@ -118,10 +131,10 @@ def changeOnHover(button, colorOnHover, colorOnLeave):
 
 # BUTTONS
 rock=canvas.create_rectangle(30,522,310,638,outline="red",width=12)
-r=Button(canvas,text="ROCK",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="red",activebackground="red",justify=LEFT)
+r=Button(canvas,text="ROCK",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="red",activebackground="red",justify=LEFT,relief=RAISED)
 r.place(x=34,y=527)
-r.bind('<Button-1>',playerchoise)
 changeOnHover(r,"red","black")
+r.bind('<Button-1>',playerchoise)
 
 paper=canvas.create_rectangle(30,122,310,238,outline="blue",width=12)
 p=Button(canvas,text="PAPER",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="blue",activebackground="blue",justify=CENTER)
