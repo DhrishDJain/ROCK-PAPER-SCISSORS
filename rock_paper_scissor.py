@@ -10,7 +10,7 @@ root.configure(background="black",width=1000)
 root.maxsize(1100,1300)
 root.minsize(1100,1300)
 root.title("ROCK PAPER SCISSOR GAME")
-# creating canvaskmijgit 
+# creating canvas 
 canvas = Canvas(background="black",border=2,height=900)
 your_score=0
 comp=0
@@ -51,7 +51,7 @@ def computer():
         oppchoise="PAPER"
     else:
         oppchoise="SCISSOR"
-    print(f"computer choose {com}")
+    # print(f"computer choose {com}")
 
 
 def display(player):
@@ -81,7 +81,6 @@ def display(player):
     opp=canvas.create_text(930, 160, text=f"{oppchoise}", fill="#00FFFF", font=('typewriter 25 bold'))
     
 
-#function to get user choise by collecting text from the button which is pressed
 def click_animation(r):
     r.config(relief=SUNKEN)
     r.update()
@@ -89,6 +88,7 @@ def click_animation(r):
     sleep(0.3)
     
         
+#function to get user choise by collecting text from the button which is pressed
 def playerchoise(event):
     pltext=event.widget.cget("text")
     if pltext=="ROCK":
