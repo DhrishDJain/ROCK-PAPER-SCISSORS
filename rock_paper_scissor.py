@@ -10,11 +10,7 @@ root.configure(background="black",width=1000)
 root.maxsize(1100,1300)
 root.minsize(1100,1300)
 root.title("ROCK PAPER SCISSOR GAME")
-<<<<<<< HEAD:rock paper scissor (gui).py
 # creating canvas git
-=======
-# creating canvaskmijf
->>>>>>> 250a7eb7fae5844f56a08d6952e1f4473a6b4990:rock_paper_scissor.py
 canvas = Canvas(background="black",border=2,height=900)
 your_score=0
 comp=0
