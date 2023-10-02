@@ -10,7 +10,7 @@ root.configure(background="black",width=1000)
 root.maxsize(1100,1300)
 root.minsize(1100,1300)
 root.title("ROCK PAPER SCISSOR GAME")
-# creating canvaskmijf
+# creating canvas 
 canvas = Canvas(background="black",border=2,height=900)
 your_score=0
 comp=0
@@ -51,7 +51,7 @@ def computer():
         oppchoise="PAPER"
     else:
         oppchoise="SCISSOR"
-    print(f"computer choose {com}")
+    # print(f"computer choose {com}")
 
 
 def display(player):
@@ -81,24 +81,28 @@ def display(player):
     opp=canvas.create_text(930, 160, text=f"{oppchoise}", fill="#00FFFF", font=('typewriter 25 bold'))
     
 
-#function to get user choise by collecting text from the button which is pressed
 def click_animation(r):
+    Button(r)
     r.config(relief=SUNKEN)
     r.update()
     r.config(relief=RAISED)
     sleep(0.3)
     
-        
+    
+#function to get user choise by collecting text from the button which is pressed
 def playerchoise(event):
     pltext=event.widget.cget("text")
-    if pltext=="ROCK":
-        click_animation(r)
+    global ROCK
+    global PAPER
+    global SCISSOR
+    if pltext==4:
+        click_animation(ROCK)
         player=1
-    elif pltext=="PAPER":
-        click_animation(p)
+    elif pltext==5:
+        click_animation(PAPER)
         player=2
     else:
-        click_animation(s)
+        click_animation(SCISSOR)
         player=3
     
     display(player)
@@ -111,10 +115,6 @@ def clr(i):
     except:
         pass
 
-canvas.create_text(176, 50,text="YOUR CHOISE", fill="#DF00FF",font='typewriter 25 bold')
-canvas.create_text(920, 50,text=f"OPPONENT CHOOSE", fill="#DF00FF",font='typewriter 25 bold')
-canvas.create_rectangle(852,109,1010,205,outline="#00FFFF",width=12)
-
 # function to change properties of button on hover
 def changeOnHover(button, colorOnHover, colorOnLeave):
 
@@ -125,24 +125,48 @@ def changeOnHover(button, colorOnHover, colorOnLeave):
 	# background color on leving widget
 	button.bind("<Leave>", func=lambda e: button.config(background=colorOnLeave,foreground=colorOnHover))
 
+    
+canvas.create_text(176, 50,text="YOUR CHOISE", fill="#DF00FF",font='typewriter 25 bold')
+canvas.create_text(920, 50,text=f"OPPONENT CHOOSE", fill="#DF00FF",font='typewriter 25 bold')
+canvas.create_rectangle(852,109,1010,205,outline="#00FFFF",width=12)
+colour=["red","blue","green"]
+ROCK=0
+PAPER=0
+SCISSOR=0
+# ROCK,PAPER,SCISSOR]
+
+t=0
+x=0
+
+for i in range(3):
+    # for x in colour:
+        print(i)
+        l[i]=canvas.create_rectangle(30,122+t,310,238+t,outline=f"{colour[x]}",width=12)
+        l[i]=Button(canvas,text=l[i],width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground=f"{colour[x]}",activebackground=f"{colour[x]}",justify=LEFT,relief=RAISED)
+        l[i].place(x=34,y=127+t)
+        t+=200
+        changeOnHover( l[i],colour[x],"black")
+        l[i].bind('<Button-1>',playerchoise)
+        x+=1
+
 # BUTTONS
-rock=canvas.create_rectangle(30,522,310,638,outline="red",width=12)
-r=Button(canvas,text="ROCK",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="red",activebackground="red",justify=LEFT,relief=RAISED)
-r.place(x=34,y=527)
-changeOnHover(r,"red","black")
-r.bind('<Button-1>',playerchoise)
+# rock=canvas.create_rectangle(30,522,310,638,outline="red",width=12)
+# r=Button(canvas,text="ROCK",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="red",activebackground="red",justify=LEFT,relief=RAISED)
+# r.place(x=34,y=527)
+# changeOnHover(r,"red","black")
+# r.bind('<Button-1>',playerchoise)
 
-paper=canvas.create_rectangle(30,122,310,238,outline="blue",width=12)
-p=Button(canvas,text="PAPER",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="blue",activebackground="blue",justify=CENTER)
-p.place(x=35,y=127)
-p.bind('<Button-1>',playerchoise)
-changeOnHover(p,"blue","black")
+# paper=canvas.create_rectangle(30,122,310,238,outline="blue",width=12)
+# p=Button(canvas,text="PAPER",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="blue",activebackground="blue",justify=CENTER)
+# p.place(x=35,y=127)
+# p.bind('<Button-1>',playerchoise)
+# changeOnHover(p,"blue","black")
 
-scissor=canvas.create_rectangle(30,322,310,438,outline="green",width=12)
-s=Button(canvas,text="SCISSOR",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="green",activebackground="green",justify=RIGHT)
-s.place(x=34,y=327)
-s.bind('<Button-1>',playerchoise)
-changeOnHover(s,"green","black")
+# scissor=canvas.create_rectangle(30,322,310,438,outline="green",width=12)
+# s=Button(canvas,text="SCISSOR",width=13,height=2,bg="black",font="comicsansmc 25 bold",foreground="green",activebackground="green",justify=RIGHT)
+# s.place(x=34,y=327)
+# s.bind('<Button-1>',playerchoise)
+# changeOnHover(s,"green","black")
 
 canvas.pack(fill=BOTH)
 root.mainloop()
