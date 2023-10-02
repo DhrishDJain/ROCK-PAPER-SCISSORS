@@ -10,7 +10,7 @@ root.configure(background="black",width=1000)
 root.maxsize(1100,1300)
 root.minsize(1100,1300)
 root.title("ROCK PAPER SCISSOR GAME")
-# creating canvas 
+# creating canvas
 canvas = Canvas(background="black",border=2,height=900)
 your_score=0
 comp=0
