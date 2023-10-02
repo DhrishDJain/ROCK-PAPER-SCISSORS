@@ -143,6 +143,6 @@ s=Button(canvas,text="SCISSOR",width=13,height=2,bg="black",font="comicsansmc 25
 s.place(x=34,y=327)
 s.bind('<Button-1>',playerchoise)
 changeOnHover(s,"green","black")
-
 canvas.pack(fill=BOTH)
 root.mainloop()
+# end
