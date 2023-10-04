@@ -1,6 +1,5 @@
 from tkinter import *
 from tkinter import ttk
-# from tkinter import update
 from time import sleep
 import random
 
@@ -145,4 +144,4 @@ s.bind('<Button-1>',playerchoise)
 changeOnHover(s,"green","black")
 canvas.pack(fill=BOTH)
 root.mainloop()
-# end
+
