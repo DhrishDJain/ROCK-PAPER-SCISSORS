@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from time import sleep
 import random
+import tkinter as tk
 
 #GUI
 root=Tk()
@@ -9,6 +10,7 @@ root.configure(background="black",width=1000)
 root.maxsize(1100,1300)
 root.minsize(1100,1300)
 root.title("ROCK PAPER SCISSOR GAME")
+root.iconphoto(False,tk.PhotoImage(file="icon1.png"))
 # creating canvaskmijf
 canvas = Canvas(background="black",border=2,height=900)
 your_score=0
@@ -106,7 +108,7 @@ def playerchoise(event):
 #function to clear previous text
 def clr(i):
     try:
-       canvas.delete(i)
+        canvas.delete(i)    
     except:
         pass
 
